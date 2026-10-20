@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CocoJoujou — Les jeux des petits musulmans</title>
+<meta name="description" content="CocoJoujou : des jeux ludiques et colorés pour les enfants musulmans. Mémoire, quiz, lettres arabes, ballons et plus encore.">
+<meta property="og:title" content="CocoJoujou — Les jeux des petits musulmans">
+<meta property="og:description" content="Des jeux colorés pour apprendre en s'amusant, en toute douceur.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#FFF3D6">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='42' r='34' fill='%23FF5FA2'/%3E%3Cpath d='M50 76l-6 14h12z' fill='%23FF5FA2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@600;700;800;900&family=Noto+Naskh+Arabic:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#2B1B4D; --cream:#FFF3D6; --paper:#FFFBF0;
+  --pink:#FF5FA2; --orange:#FF9F1C; --yellow:#FFD23F; --green:#2EC27E; --teal:#19C3C9; --blue:#3A86FF; --purple:#8A5CF6; --red:#FF5A4F;
+  --r:26px; --pop:0 6px 0 var(--ink);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Nunito,system-ui,sans-serif;font-weight:700;line-height:1.5;overflow-x:hidden;
+  background-image:radial-gradient(#ffffff99 2.5px,transparent 3px);background-size:34px 34px}
+h1,h2,h3{font-family:"Baloo 2",sans-serif;line-height:1;margin:0}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:4px solid var(--blue);outline-offset:3px;border-radius:12px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+
+/* ruban */
+.ribbon{background:var(--ink);color:#fff;overflow:hidden;white-space:nowrap;font-weight:900;font-size:14px;padding:8px 0}
+.ribbon div{display:inline-block;animation:slide 28s linear infinite}
+.ribbon span{margin:0 18px}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* nav */
+.nav{display:flex;align-items:center;gap:14px;padding:14px 0}
+.logo{display:flex;align-items:center;gap:8px;font:800 30px "Baloo 2";letter-spacing:-.5px}
+.logo b:nth-child(1){color:var(--pink)}.logo b:nth-child(2){color:var(--orange)}.logo b:nth-child(3){color:var(--green)}.logo b:nth-child(4){color:var(--blue)}.logo b:nth-child(5){color:var(--purple)}
+.logo svg{width:42px;height:48px;flex:none;animation:bob 3s ease-in-out infinite}
+.links{display:flex;gap:6px;margin-left:auto}
+.links a{padding:10px 16px;border-radius:99px;font-weight:900}
+.links a:hover{background:#fff}
+.stars{display:flex;align-items:center;gap:6px;background:var(--yellow);border:3px solid var(--ink);border-radius:99px;padding:6px 14px;font:800 20px "Baloo 2";box-shadow:0 3px 0 var(--ink)}
+.stars.bump{animation:bump .5s}
+@keyframes bump{40%{transform:scale(1.25) rotate(-4deg)}}
+
+/* hero */
+.hero{position:relative;background:linear-gradient(180deg,#7FD6FF 0%,#B9ECFF 62%,#fff 100%);border:4px solid var(--ink);border-radius:36px;overflow:hidden;padding:44px 30px 0;display:grid;grid-template-columns:1.05fr 1fr;gap:10px;align-items:end;min-height:560px;box-shadow:0 8px 0 var(--ink)}
+.hero-text{padding-bottom:50px;position:relative;z-index:3;align-self:center}
+.tag{display:inline-block;background:var(--pink);color:#fff;border:3px solid var(--ink);border-radius:99px;padding:6px 16px;font-weight:900;transform:rotate(-3deg);box-shadow:0 3px 0 var(--ink)}
+.hero h1{font-size:clamp(46px,7vw,86px);margin:18px 0 14px;letter-spacing:-1px;text-shadow:0 4px 0 #fff}
+.hero h1 em{font-style:normal;display:inline-block;color:var(--pink);transform:rotate(-2deg)}
+.hero h1 em:nth-of-type(2){color:var(--orange)}
+.hero p{font-size:19px;max-width:480px;margin:0 0 24px}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:56px;padding:12px 28px;border-radius:99px;border:4px solid var(--ink);background:var(--orange);color:#fff;font:800 22px "Baloo 2";box-shadow:var(--pop);transition:transform .12s,box-shadow .12s;text-shadow:0 2px 0 #0003}
+.btn:hover{transform:translateY(-3px);box-shadow:0 9px 0 var(--ink)}
+.btn:active{transform:translateY(5px);box-shadow:0 1px 0 var(--ink)}
+.btn.alt{background:#fff;color:var(--ink);text-shadow:none}
+.cloud{position:absolute;background:#fff;border-radius:99px;opacity:.95;animation:drift 18s linear infinite alternate}
+.cloud:before,.cloud:after{content:"";position:absolute;background:#fff;border-radius:50%}
+.c1{width:130px;height:40px;top:60px;left:6%}.c1:before{width:60px;height:60px;top:-28px;left:20px}.c1:after{width:46px;height:46px;top:-18px;left:70px}
+.c2{width:100px;height:32px;top:150px;right:8%;animation-duration:24s}.c2:before{width:46px;height:46px;top:-22px;left:16px}.c2:after{width:36px;height:36px;top:-14px;left:52px}
+@keyframes drift{to{transform:translateX(50px)}}
+.sun{position:absolute;right:46%;top:26px;width:70px;height:70px;border-radius:50%;background:var(--yellow);border:4px solid var(--ink);box-shadow:0 0 0 12px #ffd23f55;animation:spin 20s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero-art{position:relative;height:100%;min-height:430px}
+.ground{position:absolute;left:-30px;right:-30px;bottom:0;height:90px;background:var(--green);border-top:4px solid var(--ink);border-radius:50% 50% 0 0/36px 36px 0 0}
+.hero-art .kid{position:absolute;bottom:34px;z-index:2}
+.hero-art .k1{left:2%;width:30%}.hero-art .k2{left:30%;width:36%;bottom:44px}.hero-art .k3{left:62%;width:30%}
+.hero-art .balloon{position:absolute;z-index:1;animation:bob 4s ease-in-out infinite}
+.kid svg,.balloon svg{width:100%;height:auto;display:block;overflow:visible}
+@keyframes bob{50%{transform:translateY(-14px) rotate(3deg)}}
+.deco{position:absolute;pointer-events:none;font-size:30px;animation:twinkle 2.5s ease-in-out infinite}
+@keyframes twinkle{50%{transform:scale(1.3) rotate(15deg);opacity:.6}}
+
+/* sections */
+section{margin-top:64px}
+.head{display:flex;align-items:center;gap:14px;margin-bottom:22px;flex-wrap:wrap}
+.head h2{font-size:clamp(34px,5vw,52px)}
+.head h2 span{display:inline-block;background:var(--yellow);padding:0 12px;border-radius:16px;transform:rotate(-2deg);border:3px solid var(--ink)}
+.head p{margin:0;font-size:18px;flex-basis:100%}
+
+/* cartes de jeux */
+.games{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{position:relative;background:var(--c);border:4px solid var(--ink);border-radius:var(--r);box-shadow:var(--pop);overflow:hidden;text-align:left;padding:0;display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s;color:var(--ink)}
+.card:hover{transform:translateY(-6px) rotate(-1deg);box-shadow:0 12px 0 var(--ink)}
+.card:active{transform:translateY(3px);box-shadow:0 2px 0 var(--ink)}
+.card .pic{height:190px;position:relative;display:flex;align-items:flex-end;justify-content:center;background:radial-gradient(circle at 20% 20%,#ffffff88 0 14%,transparent 15%),radial-gradient(circle at 80% 30%,#ffffff66 0 9%,transparent 10%),var(--c)}
+.card .pic .big{position:absolute;left:16px;top:10px;font-size:76px;transform:rotate(-8deg);filter:drop-shadow(0 4px 0 #0002);animation:bob 3.5s ease-in-out infinite}
+.card .pic .kid{width:104px;margin-bottom:-4px;margin-right:-4px;margin-left:auto;margin-right:12px}
+.card .info{background:#fff;border-top:4px solid var(--ink);padding:14px 18px 18px;flex:1}
+.card h3{font-size:27px;margin-bottom:4px}
+.card p{margin:0 0 10px;font-size:15px}
+.badge{display:inline-block;background:var(--ink);color:#fff;padding:3px 12px;border-radius:99px;font-size:13px;font-weight:900}
+.go{position:absolute;right:14px;top:14px;width:54px;height:54px;border-radius:50%;background:#fff;border:4px solid var(--ink);display:grid;place-items:center;font-size:22px;box-shadow:0 3px 0 var(--ink)}
+.done{position:absolute;left:14px;bottom:70px;display:none}
+
+/* copains */
+.friends{background:var(--purple);border:4px solid var(--ink);border-radius:36px;box-shadow:0 8px 0 var(--ink);padding:36px 24px 0;position:relative;overflow:hidden;color:#fff}
+.friends h2{font-size:clamp(34px,5vw,52px);text-align:center}
+.friends>p{text-align:center;margin:8px 0 8px;font-size:18px}
+.row{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;align-items:end;margin-top:20px}
+.row figure{margin:0;text-align:center}
+.row .kid{padding:0 4px}
+.row .kid svg{transition:transform .2s}
+.row .kid:hover svg{transform:translateY(-10px) rotate(-3deg)}
+.row figcaption{background:#fff;color:var(--ink);border:3px solid var(--ink);border-radius:99px;padding:2px 8px;font:800 17px "Baloo 2";margin:4px 6px 14px;display:inline-block;min-width:80px}
+.friends:before,.friends:after{content:"";position:absolute;border-radius:50%;background:#ffffff22}
+.friends:before{width:200px;height:200px;left:-60px;top:-60px}.friends:after{width:150px;height:150px;right:-40px;top:40px}
+
+/* étoiles / badges */
+.rewards{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.box{border:4px solid var(--ink);border-radius:var(--r);box-shadow:var(--pop);padding:26px;background:#fff}
+.box.pink{background:var(--pink);color:#fff}
+.box h3{font-size:34px;margin-bottom:8px}
+.medals{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+.medal{width:70px;height:70px;border-radius:50%;border:4px solid var(--ink);display:grid;place-items:center;font-size:32px;background:#ffffff55;filter:grayscale(1);opacity:.55;transition:.3s}
+.medal.on{filter:none;opacity:1;background:var(--yellow);animation:bump .6s}
+.bar{height:26px;border:4px solid var(--ink);border-radius:99px;background:#fff;overflow:hidden;margin-top:14px}
+.bar i{display:block;height:100%;width:0;background:repeating-linear-gradient(45deg,var(--green) 0 14px,#46d894 14px 28px);transition:width .6s}
+
+/* parents */
+.parents{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.parents .box{padding:22px;text-align:center}
+.parents .ico{font-size:46px}
+.parents h3{font-size:26px;margin:4px 0}
+.parents p{margin:0}
+
+footer{margin-top:70px;background:var(--ink);color:#fff;padding:0 0 30px;position:relative}
+footer:before{content:"";position:absolute;left:0;right:0;top:-30px;height:31px;background:radial-gradient(circle at 25px 31px,var(--ink) 24px,transparent 25px) 0 0/50px 31px repeat-x}
+footer .wrap{padding-top:34px;display:flex;gap:20px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+footer small{opacity:.8}
+
+/* modale */
+.modal{position:fixed;inset:0;background:#2b1b4dcc;display:none;align-items:center;justify-content:center;padding:14px;z-index:50}
+.modal.open{display:flex}
+.dlg{background:var(--paper);border:5px solid var(--ink);border-radius:32px;box-shadow:0 10px 0 var(--ink);width:min(680px,100%);max-height:94vh;overflow:auto;position:relative;animation:pop .35s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{from{transform:scale(.7);opacity:0}}
+.dlg-head{background:var(--c,var(--orange));border-bottom:5px solid var(--ink);padding:18px 76px 16px 22px}
+.dlg-head h2{font-size:34px}.dlg-head p{margin:4px 0 0}
+.x{position:absolute;right:12px;top:12px;width:52px;height:52px;border-radius:50%;border:4px solid var(--ink);background:#fff;font-size:26px;line-height:1;box-shadow:0 3px 0 var(--ink)}
+.stage{padding:22px;min-height:300px;text-align:center}
+.dlg-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 22px 18px;flex-wrap:wrap}
+.msg{font:800 26px "Baloo 2";min-height:36px;margin:6px 0}
+.q{font:800 28px "Baloo 2";line-height:1.15;margin-bottom:16px}
+.ans{display:grid;gap:12px}
+.a{min-height:58px;border-radius:20px;border:4px solid var(--ink);background:#fff;font:800 21px "Baloo 2";box-shadow:0 5px 0 var(--ink);padding:8px 16px;transition:transform .1s}
+.a:hover{background:var(--yellow)}.a:active{transform:translateY(4px);box-shadow:0 1px 0 var(--ink)}
+.a.ok{background:var(--green);color:#fff}.a.no{background:var(--red);color:#fff;animation:shake .4s}
+@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.mini{min-height:44px;padding:6px 20px;font-size:18px;border-width:3px;box-shadow:0 4px 0 var(--ink)}
+
+/* mémoire */
+.mem{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:440px;margin:0 auto}
+.tile{aspect-ratio:1;perspective:600px;border:0;background:none;padding:0}
+.tile i{position:absolute;inset:0;border:4px solid var(--ink);border-radius:18px;display:grid;place-items:center;backface-visibility:hidden;transition:transform .4s;font-style:normal}
+.tile{position:relative}
+.tile .front{background:repeating-linear-gradient(45deg,var(--pink) 0 10px,#ff8abd 10px 20px);font-size:30px;color:#fff}
+.tile .back{background:#fff;font-size:clamp(30px,9vw,48px);transform:rotateY(180deg)}
+.tile.on .front{transform:rotateY(180deg)}.tile.on .back{transform:rotateY(0)}
+.tile.match .back{background:#c8f7de}
+
+/* ballons */
+.sky{position:relative;height:330px;background:linear-gradient(#bfeaff,#fff);border:4px solid var(--ink);border-radius:22px;overflow:hidden}
+.pb{position:absolute;width:76px;border:0;background:none;padding:0;animation:bob 3s ease-in-out infinite}
+.pb span{position:absolute;left:0;right:0;top:12px;text-align:center;font:800 32px "Baloo 2";color:#fff;text-shadow:0 2px 0 #0006}
+.pb.pop{animation:none;transform:scale(1.5);opacity:0;transition:.3s}
+.pb.wrong{animation:shake .4s}
+
+/* couleurs */
+.pal{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+.sw{width:50px;height:50px;border-radius:50%;border:4px solid var(--ink);box-shadow:0 3px 0 var(--ink)}
+.sw.sel{transform:scale(1.2);outline:4px solid var(--ink);outline-offset:3px}
+.paint{width:100%;max-width:420px;height:auto}
+.paint .part{cursor:pointer;transition:fill .2s}
+
+/* lettres arabes */
+.ar{font:700 140px/1.1 "Noto Naskh Arabic",serif;margin:0 0 6px;color:var(--purple)}
+.ans.three{grid-template-columns:repeat(3,1fr)}
+
+/* wudu */
+.steps{display:grid;gap:10px}
+.step{display:flex;align-items:center;gap:12px;text-align:left}
+.step .n{width:36px;height:36px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;flex:none;visibility:hidden}
+.step.ok .n{visibility:visible}
+
+/* confettis */
+.cf{position:fixed;top:-20px;font-size:28px;z-index:99;pointer-events:none;animation:fall 2.4s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
+
+@media(max-width:900px){
+  .games{grid-template-columns:repeat(2,1fr)}
+  .hero{grid-template-columns:1fr;padding:34px 20px 0;min-height:0}
+  .hero-art{min-height:360px}
+  .rewards,.parents{grid-template-columns:1fr}
+  .row{grid-template-columns:repeat(3,1fr)}
+  .links{display:none}.stars{margin-left:auto}
+}
+@media(max-width:560px){
+  .wrap{padding:0 14px}
+  .games{grid-template-columns:1fr;gap:18px}
+  .logo{font-size:25px}.logo svg{width:34px}
+  .hero{border-radius:28px}.hero p{font-size:17px}
+  .btn{font-size:20px;padding:10px 22px}
+  .hero-art{min-height:300px}
+  .sun{right:8%;top:14px;width:54px;height:54px}
+  .ar{font-size:110px}
+  .ans.three{grid-template-columns:1fr}
+  .stage{padding:16px 12px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="ribbon" aria-hidden="true"><div id="rb"></div></div>
+
+<header class="wrap nav">
+  <a class="logo" href="#top" aria-label="CocoJoujou, accueil">
+    <svg viewBox="0 0 60 70" aria-hidden="true"><path d="M30 52c-2 8 4 10 0 16" stroke="#2B1B4D" stroke-width="3" fill="none" stroke-linecap="round"/><ellipse cx="30" cy="28" rx="24" ry="27" fill="#FF5FA2" stroke="#2B1B4D" stroke-width="4"/><path d="M26 52h8l-4 6z" fill="#FF5FA2" stroke="#2B1B4D" stroke-width="3" stroke-linejoin="round"/><ellipse cx="20" cy="17" rx="6" ry="9" fill="#fff" opacity=".6" transform="rotate(25 20 17)"/></svg>
+    <span><b>Coco</b><b>Jou</b><b>j</b><b>o</b><b>u</b></span>
+  </a>
+  <nav class="links"><a href="#jeux">Les jeux</a><a href="#copains">Les copains</a><a href="#etoiles">Mes étoiles</a><a href="#parents">Parents</a></nav>
+  <div class="stars" id="starsTop" title="Mes étoiles">⭐ <span id="starN">0</span></div>
+</header>
+
+<main class="wrap" id="top">
+  <div class="hero">
+    <div class="sun" aria-hidden="true"></div>
+    <div class="cloud c1" aria-hidden="true"></div><div class="cloud c2" aria-hidden="true"></div>
+    <div class="deco" style="left:44%;top:40%;animation-delay:.3s" aria-hidden="true">✨</div>
+    <div class="deco" style="right:6%;top:18%" aria-hidden="true">⭐</div>
+    <div class="hero-text">
+      <span class="tag">🌙 Bienvenue, petit explorateur !</span>
+      <h1>On <em>joue</em>,<br>on <em>apprend</em>,<br>on rigole !</h1>
+      <p>Des jeux tout colorés pour les enfants musulmans : mémoire, ballons, lettres arabes et plein de surprises. Bismillah, on y va !</p>
+      <a class="btn" href="#jeux">Je joue ! <span aria-hidden="true">🎈</span></a>
+      <button class="btn alt" id="surprise" style="margin-left:8px">Surprise 🎲</button>
+    </div>
+    <div class="hero-art" id="heroArt" aria-label="Trois enfants qui jouent avec des ballons"></div>
+  </div>
+
+  <section id="jeux">
+    <div class="head"><h2>Choisis ton <span>jeu</span> !</h2><p>Touche une carte pour commencer. Chaque bonne réponse gagne des étoiles ⭐</p></div>
+    <div class="games" id="games"></div>
+  </section>
+
+  <section id="copains">
+    <div class="friends">
+      <h2>Les copains de CocoJoujou</h2>
+      <p>Des petits de partout, des couleurs de partout, tous amis !</p>
+      <div class="row" id="friends"></div>
+    </div>
+  </section>
+
+  <section id="etoiles">
+    <div class="rewards">
+      <div class="box pink">
+        <h3>Mes étoiles ⭐</h3>
+        <div id="levelTxt">Joue pour gagner ta première étoile !</div>
+        <div class="bar"><i id="barFill"></i></div>
+      </div>
+      <div class="box">
+        <h3>Mes médailles</h3>
+        <div>Gagne des étoiles pour les débloquer.</div>
+        <div class="medals" id="medals"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="parents">
+    <div class="head"><h2>Pour les <span>parents</span></h2></div>
+    <div class="parents">
+      <div class="box"><div class="ico">🌈</div><h3>Doux et sans pub</h3><p>Pas de publicité, pas de compte, rien à acheter. Juste du jeu.</p></div>
+      <div class="box"><div class="ico">🕌</div><h3>Valeurs de l'islam</h3><p>Des jeux qui parlent de bismillah, du wudu, des lettres arabes et des belles manières.</p></div>
+      <div class="box"><div class="ico">🔒</div><h3>Zéro donnée</h3><p>Les étoiles restent sur l'appareil de votre enfant. Nous ne collectons rien.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="logo" style="font-size:28px"><span><b>Coco</b><b>Jou</b><b>j</b><b>o</b><b>u</b></span></div>
+    <small>Fait avec ❤️ pour les petits musulmans · Jouer, apprendre, grandir</small>
+  </div>
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="dlg" id="dlg">
+    <button class="x" id="mClose" aria-label="Fermer">×</button>
+    <div class="dlg-head"><h2 id="mTitle"></h2><p id="mSub"></p></div>
+    <div class="stage" id="stage"></div>
+    <div class="dlg-foot"><span class="stars" style="box-shadow:none">⭐ <span id="mStars">0</span></span><button class="btn mini alt" id="mAgain">Rejouer ↻</button></div>
+  </div>
+</div>
+
+<script>
+/* ---------- petits outils ---------- */
+const $=(s,r=document)=>r.querySelector(s);
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const pick=(a,n)=>shuffle(a).slice(0,n);
+let total=0;
+try{total=+localStorage.getItem('cj_stars')||0}catch(e){}
+const MEDALS=[[1,'🌱'],[5,'🐣'],[12,'🦋'],[25,'🌈'],[45,'🚀'],[70,'👑']];
+
+/* ---------- enfants en SVG (toutes les couleurs de peau, visages doux sans traits) ---------- */
+const SKINS=['#FFE0C2','#F1C27D','#D9A066','#B97A4A','#8D5524','#5C3A21'];
+function kid(o){
+  const {skin,hair='#2b1b1b',top='#FF5FA2',bottom='#3A86FF',hijab,style='short',wave}=o;
+  const cheeks=`<circle cx="46" cy="61" r="5" fill="#FF7A8A" opacity=".45"/><circle cx="74" cy="61" r="5" fill="#FF7A8A" opacity=".45"/><path d="M54 63q6 5 12 0" stroke="#2B1B4D" stroke-width="2.6" fill="none" stroke-linecap="round" opacity=".0"/>`;
+  let head='',back='',front='';
+  if(hijab){
+    back=`<path d="M60 14C36 14 30 36 31 56c1 18 -6 38 -4 58h66c2-20-5-40-4-58 1-20-5-42-29-42z" fill="${hijab}" stroke="#2B1B4D" stroke-width="3.5" stroke-linejoin="round"/>`;
+    head=`<ellipse cx="60" cy="55" rx="23" ry="25" fill="${skin}" stroke="#2B1B4D" stroke-width="3.5"/>`;
+    front=`<path d="M36 50c2-22 14-28 24-28s22 6 24 28c-6-9-14-13-24-13s-18 4-24 13z" fill="${hijab}"/><path d="M60 14C36 14 30 36 31 56" fill="none"/>`;
+  }else{
+    let h='';
+    if(style==='curly')h=`<g fill="${hair}" stroke="#2B1B4D" stroke-width="3"><circle cx="38" cy="38" r="13"/><circle cx="52" cy="26" r="14"/><circle cx="70" cy="26" r="14"/><circle cx="84" cy="38" r="13"/><circle cx="60" cy="30" r="14"/></g>`;
+    else if(style==='long')h=`<path d="M33 60c-3-30 8-44 27-44s30 14 27 44c1 14 3 26-4 34-3-14-6-26-8-34l-30 0c-2 8-5 20-8 34-7-8-5-20-4-34z" fill="${hair}" stroke="#2B1B4D" stroke-width="3.5" stroke-linejoin="round"/>`;
+    else if(style==='cap')h=`<path d="M36 46c0-18 10-26 24-26s24 8 24 26z" fill="#fff" stroke="#2B1B4D" stroke-width="3.5"/><path d="M38 38h44M40 30h40" stroke="#FF9F1C" stroke-width="3" opacity=".8"/>`;
+    else h=`<path d="M35 52c-2-22 9-34 25-34s27 12 25 34c-5-10-12-15-25-15s-20 5-25 15z" fill="${hair}" stroke="#2B1B4D" stroke-width="3.5" stroke-linejoin="round"/>`;
+    back=style==='long'?h:'';
+    head=`<ellipse cx="60" cy="55" rx="23" ry="25" fill="${skin}" stroke="#2B1B4D" stroke-width="3.5"/>`;
+    front=style==='long'?`<path d="M36 50c2-18 12-24 24-24s22 6 24 24c-6-8-14-12-24-12s-18 4-24 12z" fill="${hair}"/>`:h;
+  }
+  const dress=o.dress;
+  const bodyPath=dress?`<path d="M42 82h36l10 56H32z" fill="${top}" stroke="#2B1B4D" stroke-width="3.5" stroke-linejoin="round"/><path d="M38 128h44M35 116h50" stroke="#fff" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round" opacity=".8"/>`
+   :`<rect x="40" y="80" width="40" height="40" rx="12" fill="${top}" stroke="#2B1B4D" stroke-width="3.5"/><path d="M42 118h14v34H42zM64 118h14v34H64z" fill="${bottom}" stroke="#2B1B4D" stroke-width="3.5" stroke-linejoin="round"/>`;
+  const legs=dress?`<rect x="45" y="136" width="12" height="18" rx="5" fill="${skin}" stroke="#2B1B4D" stroke-width="3.5"/><rect x="63" y="136" width="12" height="18" rx="5" fill="${skin}" stroke="#2B1B4D" stroke-width="3.5"/>`:'';
+  const shoes=`<ellipse cx="49" cy="157" rx="11" ry="6" fill="#FFD23F" stroke="#2B1B4D" stroke-width="3.5"/><ellipse cx="71" cy="157" rx="11" ry="6" fill="#FFD23F" stroke="#2B1B4D" stroke-width="3.5"/>`;
+  const armL=`<path d="M42 88c-10 6-14 16-12 26" stroke="#2B1B4D" stroke-width="13" stroke-linecap="round" fill="none"/><path d="M42 88c-10 6-14 16-12 26" stroke="${top}" stroke-width="7" stroke-linecap="round" fill="none"/><circle cx="30" cy="117" r="7" fill="${skin}" stroke="#2B1B4D" stroke-width="3"/>`;
+  const armR=wave?`<path d="M78 88c12-2 20-12 20-26" stroke="#2B1B4D" stroke-width="13" stroke-linecap="round" fill="none"/><path d="M78 88c12-2 20-12 20-26" stroke="${top}" stroke-width="7" stroke-linecap="round" fill="none"/><circle cx="98" cy="58" r="7" fill="${skin}" stroke="#2B1B4D" stroke-width="3"/>`
+    :`<path d="M78 88c10 6 14 16 12 26" stroke="#2B1B4D" stroke-width="13" stroke-linecap="round" fill="none"/><path d="M78 88c10 6 14 16 12 26" stroke="${top}" stroke-width="7" stroke-linecap="round" fill="none"/><circle cx="90" cy="117" r="7" fill="${skin}" stroke="#2B1B4D" stroke-width="3"/>`;
+  return `<svg viewBox="0 0 120 166" aria-hidden="true">${back}${legs}${bodyPath}${shoes}${armL}${armR}<rect x="53" y="74" width="14" height="12" rx="5" fill="${skin}"/>${head}${front}${cheeks}</svg>`;
+}
+const KIDS={
+  amina:{skin:SKINS[1],hijab:'#8A5CF6',top:'#FF5FA2',dress:1,wave:1},
+  yanis:{skin:SKINS[0],hair:'#6b3f1d',top:'#3A86FF',bottom:'#FFD23F',style:'short'},
+  moussa:{skin:SKINS[5],hair:'#1a1210',top:'#2EC27E',bottom:'#FF9F1C',style:'short',wave:1},
+  aicha:{skin:SKINS[3],hijab:'#19C3C9',top:'#FFD23F',dress:1},
+  ilyes:{skin:SKINS[2],hair:'#2b1b1b',top:'#FF5A4F',bottom:'#3A86FF',style:'cap'},
+  zaynab:{skin:SKINS[4],hair:'#1a1210',top:'#FF9F1C',dress:1,style:'curly',wave:1},
+  omar:{skin:SKINS[1],hair:'#3a2418',top:'#8A5CF6',bottom:'#2EC27E',style:'curly'},
+  nour:{skin:SKINS[0],hijab:'#FF9F1C',top:'#19C3C9',dress:1,wave:1}
+};
+const K=n=>kid(KIDS[n]);
+
+/* ---------- ballons ---------- */
+function balloon(c,w=60){return `<svg viewBox="0 0 60 100" width="${w}" aria-hidden="true"><path d="M30 76c-3 10 5 12 0 22" stroke="#2B1B4D" stroke-width="3" fill="none" stroke-linecap="round"/><ellipse cx="30" cy="34" rx="25" ry="30" fill="${c}" stroke="#2B1B4D" stroke-width="4"/><path d="M26 63h8l-4 8z" fill="${c}" stroke="#2B1B4D" stroke-width="3" stroke-linejoin="round"/><ellipse cx="20" cy="22" rx="5" ry="10" fill="#fff" opacity=".55" transform="rotate(25 20 22)"/></svg>`}
+const BC=['#FF5FA2','#FF9F1C','#FFD23F','#2EC27E','#19C3C9','#3A86FF','#8A5CF6','#FF5A4F'];
+
+/* ---------- ruban ---------- */
+const rbTxt=['🎈 Bienvenue chez CocoJoujou','⭐ Joue et gagne des étoiles','🌙 Bismillah, on commence','🌈 Des jeux pour tous les petits','🎲 Nouveaux jeux bientôt'];
+$('#rb').innerHTML=[...rbTxt,...rbTxt,...rbTxt,...rbTxt].map(t=>`<span>${t}</span>`).join('');
+
+/* ---------- hero ---------- */
+$('#heroArt').innerHTML=
+ `<div class="balloon" style="left:6%;top:8%;width:15%">${balloon(BC[0])}</div>
+  <div class="balloon" style="left:40%;top:0;width:13%;animation-delay:.7s">${balloon(BC[2])}</div>
+  <div class="balloon" style="right:4%;top:14%;width:16%;animation-delay:1.3s">${balloon(BC[5])}</div>
+  <div class="balloon" style="left:24%;top:24%;width:10%;animation-delay:2s">${balloon(BC[3])}</div>
+  <div class="balloon" style="right:30%;top:6%;width:11%;animation-delay:1s">${balloon(BC[7])}</div>
+  <div class="ground"></div>
+  <div class="kid k1">${K('moussa')}</div><div class="kid k2">${K('amina')}</div><div class="kid k3">${K('yanis')}</div>`;
+
+/* ---------- cartes de jeux ---------- */
+const GAMES=[
+ {id:'memory',t:'Les paires magiques',d:'Retrouve les images pareilles.',c:'#FFD23F',e:'🧩',k:'moussa',b:'Mémoire · dès 4 ans'},
+ {id:'pop',t:'Éclate les ballons',d:'Touche 1, 2, 3… dans l\'ordre !',c:'#FF5FA2',e:'🎈',k:'amina',b:'Compter · dès 4 ans'},
+ {id:'quiz',t:'Les p\'tits savants',d:'Des questions toutes douces.',c:'#19C3C9',e:'🌙',k:'yanis',b:'Quiz · dès 5 ans'},
+ {id:'color',t:'Les ballons en couleurs',d:'Peins les ballons comme tu veux.',c:'#8A5CF6',e:'🎨',k:'zaynab',b:'Créatif · dès 3 ans'},
+ {id:'letters',t:'Les lettres arabes',d:'Alif, Ba, Ta… retrouve leur nom !',c:'#2EC27E',e:'ب',k:'aicha',b:'Apprendre · dès 5 ans'},
+ {id:'wudu',t:'Le chemin du wudu',d:'Remets les étapes dans l\'ordre.',c:'#FF9F1C',e:'💧',k:'ilyes',b:'Ordre · dès 6 ans'}
+];
+$('#games').innerHTML=GAMES.map(g=>`<button class="card" style="--c:${g.c}" data-g="${g.id}" aria-label="Jouer à ${g.t}">
+  <div class="pic"><span class="big" aria-hidden="true">${g.e}</span><div class="kid">${K(g.k)}</div><span class="go" aria-hidden="true">▶</span></div>
+  <div class="info"><h3>${g.t}</h3><p>${g.d}</p><span class="badge">${g.b}</span></div></button>`).join('');
+
+/* ---------- copains ---------- */
+const FR=[['moussa','Moussa'],['amina','Amina'],['yanis','Yanis'],['aicha','Aïcha'],['ilyes','Ilyes'],['zaynab','Zaynab'],['omar','Omar'],['nour','Nour']];
+$('#friends').innerHTML=FR.slice(0,6).map(([k,n])=>`<figure><div class="kid">${K(k)}</div><figcaption>${n}</figcaption></figure>`).join('');
+
+/* ---------- étoiles & médailles ---------- */
+$('#medals').innerHTML=MEDALS.map(([n,e])=>`<div class="medal" data-n="${n}" title="${n} étoiles">${e}</div>`).join('');
+function paintStars(bump){
+  $('#starN').textContent=total;$('#mStars').textContent=total;
+  document.querySelectorAll('.medal').forEach(m=>m.classList.toggle('on',total>=+m.dataset.n));
+  const next=MEDALS.find(m=>m[0]>total);
+  $('#barFill').style.width=(next?Math.min(100,total/next[0]*100):100)+'%';
+  $('#levelTxt').textContent=total===0?'Joue pour gagner ta première étoile !':next?`Encore ${next[0]-total} étoile${next[0]-total>1?'s':''} pour la prochaine médaille ${next[1]}`:'Tu as toutes les médailles, bravo champion ! 👑';
+  if(bump){const s=$('#starsTop');s.classList.remove('bump');void s.offsetWidth;s.classList.add('bump')}
+}
+function addStars(n){total+=n;try{localStorage.setItem('cj_stars',total)}catch(e){}paintStars(true)}
+function confetti(n=26){const em=['🎈','⭐','✨','🎉','🌙','💛','🌈'];for(let i=0;i<n;i++){const d=document.createElement('div');d.className='cf';d.textContent=em[i%em.length];d.style.left=Math.random()*100+'vw';d.style.animationDelay=Math.random()*.6+'s';d.style.fontSize=(20+Math.random()*20)+'px';document.body.appendChild(d);setTimeout(()=>d.remove(),3200)}}
+paintStars(false);
+
+/* ---------- moteur de jeux ---------- */
+let cur=null;const stage=$('#stage');
+const CHEERS=['Bravo ! 🎉','Machaallah ! ✨','Super ! 🌟','Génial ! 💛','Bien joué ! 🎈'];
+function win(n,txt){addStars(n);confetti();stage.insertAdjacentHTML('beforeend',`<div class="msg">${txt||CHEERS[Math.floor(Math.random()*CHEERS.length)]} +${n} ⭐</div>`)}
+function open(id){
+  const g=GAMES.find(x=>x.id===id);cur=id;
+  $('#mTitle').textContent=g.t;$('#mSub').textContent=g.d;$('.dlg-head').style.setProperty('--c',g.c);
+  $('#modal').classList.add('open');document.body.style.overflow='hidden';
+  $('#mStars').textContent=total;start();$('#mClose').focus();
+}
+function close(){$('#modal').classList.remove('open');document.body.style.overflow='';cur=null}
+function start(){stage.innerHTML='';({memory,pop,quiz,color,letters,wudu})[cur]()}
+document.addEventListener('click',e=>{const c=e.target.closest('.card');if(c)open(c.dataset.g)});
+$('#mClose').onclick=close;$('#mAgain').onclick=start;
+$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')close()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+$('#surprise').onclick=()=>open(GAMES[Math.floor(Math.random()*GAMES.length)].id);
+
+/* 1 · mémoire */
+function memory(){
+  const em=pick(['🌙','⭐','🕌','🐪','🌴','🎈','🍉','🌷','🐑','🕋'],6);
+  const cards=shuffle([...em,...em]);let open=[],found=0,lock=false,moves=0;
+  stage.innerHTML=`<div class="mem">${cards.map(c=>`<button class="tile" data-v="${c}" aria-label="Carte cachée"><i class="front">?</i><i class="back">${c}</i></button>`).join('')}</div><div class="msg" id="mm">Coups : 0</div>`;
+  stage.querySelectorAll('.tile').forEach(t=>t.onclick=()=>{
+    if(lock||t.classList.contains('on'))return;
+    t.classList.add('on');open.push(t);
+    if(open.length===2){
+      moves++;$('#mm').textContent='Coups : '+moves;lock=true;
+      const [a,b]=open;
+      if(a.dataset.v===b.dataset.v){a.classList.add('match');b.classList.add('match');open=[];lock=false;found++;
+        if(found===6){$('#mm').remove();win(moves<=9?4:moves<=14?3:2)}}
+      else setTimeout(()=>{a.classList.remove('on');b.classList.remove('on');open=[];lock=false},800);
+    }
+  });
+}
+
+/* 2 · éclate les ballons (1,2,3…) */
+function pop(){
+  let level=0;const sizes=[3,4,5,6];
+  function round(){
+    const n=sizes[level];stage.innerHTML=`<div class="q">Touche les ballons dans l'ordre : de 1 à ${n}</div><div class="sky" id="sky"></div>`;
+    const sky=$('#sky'),W=sky.clientWidth||320,H=sky.clientHeight;let next=1;const placed=[];
+    for(let i=1;i<=n;i++){
+      let x,y,t=0;do{x=Math.random()*(W-86)+5;y=Math.random()*(H-130)+10;t++}while(t<40&&placed.some(p=>Math.hypot(p[0]-x,p[1]-y)<86));
+      placed.push([x,y]);
+      const b=document.createElement('button');b.className='pb';b.style.cssText=`left:${x}px;top:${y}px;animation-delay:${i*.3}s`;b.setAttribute('aria-label','Ballon '+i);
+      b.innerHTML=balloon(BC[(i+level)%BC.length],76)+`<span>${i}</span>`;
+      b.onclick=()=>{
+        if(i!==next){b.classList.remove('wrong');void b.offsetWidth;b.classList.add('wrong');return}
+        b.classList.add('pop');b.disabled=true;next++;
+        if(next>n){setTimeout(()=>{if(cur!=='pop')return;if(level<sizes.length-1){level++;addStars(1);round()}else{stage.innerHTML='';win(2,'Tous les ballons sont éclatés ! 🎈')}},350)}
+      };
+      sky.appendChild(b);
+    }
+  }
+  round();
+}
+
+/* 3 · quiz */
+const QUIZ=[
+ ['Que dit-on avant de manger ?',['Bismillah','Bonne nuit','Au revoir'],0],
+ ['Quel mois jeûnent les musulmans ?',['Ramadan','Janvier','Juillet'],0],
+ ['Comment s\'appelle le livre sacré de l\'islam ?',['Le Coran','Un atlas','Un dictionnaire'],0],
+ ['Combien de prières par jour ?',['3','5','10'],1],
+ ['Comment salue-t-on un musulman ?',['As-salamou alaykoum','Bonne soirée','Salut la compagnie'],0],
+ ['Vers quelle ville se tournent les musulmans pour prier ?',['Paris','La Mecque','Londres'],1],
+ ['Que dit-on pour remercier Allah ?',['Alhamdoulillah','Pardon','À demain'],0],
+ ['Comment s\'appelle la grande fête après Ramadan ?',['Aïd el-Fitr','Carnaval','Noël'],0],
+ ['Comment s\'appelle le lieu de prière ?',['La mosquée','Le cinéma','Le stade'],0]
+];
+function quiz(){
+  const qs=pick(QUIZ,5);let i=0,ok=0;
+  function show(){
+    const [q,opts]=qs[i];const o=shuffle(opts.map((t,k)=>[t,k===qs[i][2]]));
+    stage.innerHTML=`<div class="q">${i+1}/5 · ${q}</div><div class="ans">${o.map(([t,c])=>`<button class="a" data-c="${c?1:0}">${t}</button>`).join('')}</div>`;
+    stage.querySelectorAll('.a').forEach(b=>b.onclick=()=>{
+      stage.querySelectorAll('.a').forEach(x=>{x.disabled=true;if(x.dataset.c==='1')x.classList.add('ok')});
+      if(b.dataset.c==='1'){ok++;addStars(1)}else b.classList.add('no');
+      setTimeout(()=>{i++;if(i<5)show();else{stage.innerHTML=`<div class="msg">Tu as trouvé ${ok} réponse${ok>1?'s':''} sur 5 !</div>`;confetti(ok*5+5)}},1100);
+    });
+  }
+  show();
+}
+
+/* 4 · couleurs */
+function color(){
+  const cols=['#FF5FA2','#FF9F1C','#FFD23F','#2EC27E','#19C3C9','#3A86FF','#8A5CF6','#FF5A4F'];let sel=cols[0];
+  const pos=[[70,110,50],[145,80,56],[225,115,50],[110,200,48],[190,205,50]];
+  stage.innerHTML=`<div class="q">Choisis une couleur, puis touche un ballon !</div>
+   <div class="pal">${cols.map((c,i)=>`<button class="sw${i?'':' sel'}" style="background:${c}" data-c="${c}" aria-label="Couleur ${i+1}"></button>`).join('')}</div>
+   <svg class="paint" viewBox="0 0 300 330" role="img" aria-label="Cinq ballons à colorier"><rect width="300" height="330" rx="22" fill="#E8F8FF"/>
+   ${pos.map(([x,y,r],i)=>`<path d="M${x} ${y+r*1.15}C${x-10} ${y+r*1.8} ${x+10} ${y+r*2} ${x} ${y+r*2.5}" stroke="#2B1B4D" stroke-width="3" fill="none"/><ellipse class="part" data-i="${i}" cx="${x}" cy="${y}" rx="${r}" ry="${r*1.15}" fill="#fff" stroke="#2B1B4D" stroke-width="4"/>`).join('')}</svg>
+   <div id="cm"></div>`;
+  const done=new Set();
+  stage.querySelectorAll('.sw').forEach(s=>s.onclick=()=>{stage.querySelectorAll('.sw').forEach(x=>x.classList.remove('sel'));s.classList.add('sel');sel=s.dataset.c});
+  stage.querySelectorAll('.part').forEach(p=>p.onclick=()=>{p.setAttribute('fill',sel);done.add(p.dataset.i);
+    if(done.size===5){done.add('x');stage.querySelector('#cm').innerHTML='';win(2,'Quelles belles couleurs ! 🌈')}});
+}
+
+/* 5 · lettres arabes */
+const LET=[['ا','Alif'],['ب','Ba'],['ت','Ta'],['ث','Tha'],['ج','Jim'],['ح','Ha'],['د','Dal'],['ر','Ra'],['س','Sin'],['م','Mim']];
+function letters(){
+  const qs=pick(LET,5);let i=0,ok=0;
+  function show(){
+    const [l,n]=qs[i];const o=shuffle([n,...pick(LET.filter(x=>x[1]!==n).map(x=>x[1]),2)]);
+    stage.innerHTML=`<div class="q">${i+1}/5 · Comment s'appelle cette lettre ?</div><div class="ar" lang="ar" dir="rtl">${l}</div><div class="ans three">${o.map(t=>`<button class="a" data-c="${t===n?1:0}">${t}</button>`).join('')}</div>`;
+    stage.querySelectorAll('.a').forEach(b=>b.onclick=()=>{
+      stage.querySelectorAll('.a').forEach(x=>{x.disabled=true;if(x.dataset.c==='1')x.classList.add('ok')});
+      if(b.dataset.c==='1'){ok++;addStars(1)}else b.classList.add('no');
+      setTimeout(()=>{i++;if(i<5)show();else{stage.innerHTML=`<div class="msg">${ok} lettre${ok>1?'s':''} sur 5 trouvée${ok>1?'s':''} !</div>`;confetti(ok*5+5)}},1100);
+    });
+  }
+  show();
+}
+
+/* 6 · wudu */
+function wudu(){
+  const S=['Dire « Bismillah »','Laver les mains','Rincer la bouche','Nettoyer le nez','Laver le visage','Laver les bras','Essuyer la tête','Laver les pieds'];
+  const E=['🗣️','🙌','👄','👃','😊','💪','🧢','🦶'];let next=0;
+  stage.innerHTML=`<div class="q">Touche les étapes dans le bon ordre !</div><div class="steps">${shuffle(S.map((s,i)=>i)).map(i=>`<button class="a step" data-i="${i}"><span class="n"></span><span>${E[i]} ${S[i]}</span></button>`).join('')}</div>`;
+  stage.querySelectorAll('.step').forEach(b=>b.onclick=()=>{
+    if(b.classList.contains('ok'))return;
+    if(+b.dataset.i===next){next++;b.classList.add('ok');b.querySelector('.n').textContent=next;
+      if(next===S.length){win(3,'Wudu parfait ! 💧')}}
+    else{b.classList.remove('no');void b.offsetWidth;b.classList.add('no');setTimeout(()=>b.classList.remove('no'),500)}
+  });
+}
+</script>
+</body>
+</html>
