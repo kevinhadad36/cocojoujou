@@ -8,19 +8,19 @@
 <meta property="og:title" content="CocoJoujou — L'espace jeux des petits musulmans">
 <meta property="og:description" content="Des jeux colorés pour apprendre en s'amusant, pas à pas et avec le sourire.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#6c4cf5">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='42' r='34' fill='%23FF86D0'/%3E%3Cpath d='M50 76l-6 14h12z' fill='%23FF86D0'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Noto+Naskh+Arabic:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#4b4b4b;--muted:#8a8a8a;--line:#e5e5e5;--bg:#fff;--head:#3c3c3c;
-  --green:#58cc02;--green-l:#46a302;--blue:#1cb0f6;--blue-l:#1899d6;--yellow:#ffc800;--yellow-l:#e5b400;
-  --red:#ff4b4b;--red-l:#ea2b2b;--purple:#ce82ff;--purple-l:#a568cc;--orange:#ff9600;--orange-l:#e08600;--pink:#ff86d0;--pink-l:#e060b0;--teal:#00cd9c;--teal-l:#00a97f;
+  --ink:#4a4262;--muted:#8b82a8;--line:#e6def7;--bg:#fbf9ff;--head:#2d2250;
+  --green:#6c4cf5;--green-l:#5133d6;--blue:#2bb6ff;--blue-l:#1796dd;--yellow:#ffcf33;--yellow-l:#e6b300;
+  --red:#ff5d73;--red-l:#e63f57;--purple:#e056c8;--purple-l:#b83fa8;--orange:#ff8a3d;--orange-l:#e66f1f;--pink:#ff9ecb;--pink-l:#e87aab;--teal:#12c9b4;--teal-l:#0fa897;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:Nunito,system-ui,sans-serif;font-weight:700;color:var(--ink);background:var(--bg);line-height:1.45;overflow-x:hidden}
+body{margin:0;font-family:Fredoka,system-ui,sans-serif;font-weight:700;color:var(--ink);background:var(--bg) radial-gradient(#eadfff 2px,transparent 2.6px) 0 0/30px 30px;line-height:1.45;overflow-x:hidden}
 h1,h2,h3,p{margin:0}
 h1,h2,h3{color:var(--head);font-weight:900;line-height:1.1}
 a{color:inherit;text-decoration:none}
@@ -30,7 +30,7 @@ svg{display:block}
 .hide{display:none!important}
 
 /* boutons */
-.btn{--c:var(--green);--l:var(--green-l);display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:12px 24px;border-radius:16px;background:var(--c);color:#fff;font-weight:900;font-size:15px;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 4px 0 var(--l);transition:transform .08s,box-shadow .08s,filter .1s}
+.btn{--c:var(--green);--l:var(--green-l);display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:12px 28px;border-radius:99px;background:var(--c);color:#fff;font-weight:900;font-size:15px;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 4px 0 var(--l);transition:transform .08s,box-shadow .08s,filter .1s}
 .btn:hover{filter:brightness(1.06)}
 .btn:active{transform:translateY(4px);box-shadow:none}
 .btn.ghost{background:#fff;color:var(--blue);border:2px solid var(--line);box-shadow:0 4px 0 var(--line)}
@@ -44,7 +44,7 @@ svg{display:block}
 .logo{display:flex;align-items:center;gap:8px;font-weight:900;font-size:26px;letter-spacing:-.5px}
 .logo svg{width:34px;height:40px;flex:none}
 .logo span b:nth-child(1){color:var(--pink)}.logo span b:nth-child(2){color:var(--orange)}.logo span b:nth-child(3){color:var(--green)}.logo span b:nth-child(4){color:var(--blue)}.logo span b:nth-child(5){color:var(--purple)}.logo span b:nth-child(6){color:var(--red)}.logo span b:nth-child(7){color:var(--teal)}.logo span b:nth-child(8){color:var(--yellow-l)}.logo span b:nth-child(9){color:var(--pink)}
-.logo small{display:block;font-size:12px;color:var(--green-l);letter-spacing:0;font-weight:800;margin-top:-2px}
+.logo small{display:block;font-size:12px;color:var(--purple-l);letter-spacing:0;font-weight:800;margin-top:-2px}
 
 /* ===== ACCUEIL ===== */
 .top{position:sticky;top:0;z-index:30;background:#fffffff2;backdrop-filter:blur(8px);border-bottom:2px solid var(--line)}
@@ -63,8 +63,8 @@ svg{display:block}
 .hero p{font-size:19px;max-width:470px;margin-bottom:24px;color:var(--ink)}
 .hero .btns{display:flex;gap:12px;flex-wrap:wrap}
 .scene{position:relative;aspect-ratio:1.15;max-width:520px;margin-left:auto;width:100%}
-.scene .blob{position:absolute;inset:6% 4% 0;background:radial-gradient(circle at 30% 30%,#dff4ff,#fff2c9 60%,#ffe0f1);border-radius:46% 54% 50% 50%/55% 50% 50% 45%}
-.scene .ground{position:absolute;left:4%;right:4%;bottom:2%;height:11%;background:var(--green);border-radius:50%;opacity:.9;box-shadow:inset 0 -8px 0 var(--green-l)}
+.scene .blob{position:absolute;inset:6% 4% 0;background:radial-gradient(circle at 30% 30%,#d9f3ff,#e9deff 55%,#ffe0f1);border-radius:46% 54% 50% 50%/55% 50% 50% 45%}
+.scene .ground{position:absolute;left:4%;right:4%;bottom:2%;height:11%;background:var(--teal);border-radius:50%;box-shadow:inset 0 -8px 0 var(--teal-l)}
 .scene .k{position:absolute;bottom:8%}
 .scene .k1{left:3%;width:30%}.scene .k2{left:30%;width:40%;bottom:10%}.scene .k3{right:2%;width:32%}
 .scene .bl{position:absolute;animation:bob 4s ease-in-out infinite}
@@ -81,12 +81,12 @@ svg{display:block}
 /* rubriques + cartes de jeux */
 .rub{display:inline-flex;align-items:center;gap:8px;margin:26px 0 12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;font-size:13px;color:#fff;padding:5px 14px;border-radius:99px;background:var(--c);box-shadow:0 3px 0 var(--l)}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.gc{--c:var(--yellow);--l:var(--yellow-l);display:flex;align-items:center;gap:16px;text-align:left;width:100%;background:#fff;border:2px solid var(--line);border-bottom-width:5px;border-radius:22px;padding:14px 16px;position:relative;overflow:hidden;transition:transform .12s,border-color .12s,background .12s}
+.gc{--c:var(--yellow);--l:var(--yellow-l);display:flex;align-items:center;gap:16px;text-align:left;width:100%;background:#fff;border:2px solid var(--line);border-bottom-width:5px;border-radius:30px;padding:14px 18px;position:relative;overflow:hidden;transition:transform .12s,border-color .12s,background .12s}
 .gc:before{content:"";position:absolute;right:-26px;top:-26px;width:90px;height:90px;border-radius:50%;background:var(--c);opacity:.14}
 .gc:hover{border-color:var(--c);background:#fffdf7;transform:translateY(-2px)}
 .gc:active{transform:translateY(3px);border-bottom-width:2px;margin-bottom:3px}
-.gc .ico{flex:none;width:68px;height:68px;border-radius:18px;background:var(--c);box-shadow:0 5px 0 var(--l);display:grid;place-items:center;color:#fff;font:700 38px/1 "Noto Naskh Arabic",serif}
-.gc .ico.em{font:400 34px/1 Nunito,sans-serif}
+.gc .ico{flex:none;width:68px;height:68px;border-radius:50%;background:var(--c);box-shadow:0 5px 0 var(--l);display:grid;place-items:center;color:#fff;font:700 38px/1 "Noto Naskh Arabic",serif}
+.gc .ico.em{font:400 34px/1 Fredoka,sans-serif}
 .gc h3{font-size:19px;margin-bottom:2px}
 .gc p{font-size:14px;color:var(--muted);font-weight:700;line-height:1.3}
 .gc .face{margin-left:auto;flex:none;width:52px;height:56px;position:relative;z-index:1}
@@ -115,9 +115,9 @@ footer.ft{margin-top:50px;border-top:2px solid var(--line);padding:26px 18px 90p
 .side{position:sticky;top:84px;align-self:start;display:flex;flex-direction:column;gap:6px}
 .side a{display:flex;align-items:center;gap:14px;padding:8px 12px;border:2px solid transparent;border-radius:16px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;font-size:15px;color:var(--ink)}
 .side a:hover{background:#f6f6f6}
-.side a.on{border-color:var(--orange);background:#fff3e0;color:var(--orange-l)}
-.side .si{width:40px;height:40px;border-radius:12px;background:var(--c);box-shadow:0 3px 0 var(--l);display:grid;place-items:center;font-size:20px}
-.banner{display:flex;align-items:center;gap:14px;background:linear-gradient(100deg,#fff3e0,#ffe8f4 60%,#e5f6ff);border:2px solid var(--orange);border-radius:22px;padding:18px 20px;margin-bottom:6px;position:relative;overflow:hidden}
+.side a.on{border-color:var(--green);background:#f1ebff;color:var(--green-l)}
+.side .si{width:40px;height:40px;border-radius:50%;background:var(--c);box-shadow:0 3px 0 var(--l);display:grid;place-items:center;font-size:20px}
+.banner{display:flex;align-items:center;gap:14px;background:linear-gradient(100deg,#efe7ff,#ffe6f3 55%,#dff4ff);border:2px solid var(--green);border-radius:22px;padding:18px 20px;margin-bottom:6px;position:relative;overflow:hidden}
 .banner h1{font-size:30px}
 .banner p{margin-top:4px}
 .banner .bk{margin-left:auto;display:flex;align-items:flex-end;gap:2px;flex:none}
@@ -131,31 +131,31 @@ footer.ft{margin-top:50px;border-top:2px solid var(--line);padding:26px 18px 90p
 .ph h1{font-size:22px;flex:1;text-align:center}
 .round{width:44px;height:44px;border-radius:14px;border:2px solid var(--line);background:#fff;box-shadow:0 3px 0 var(--line);font-size:20px;display:grid;place-items:center;color:var(--muted)}
 .prog{height:16px;border-radius:99px;background:#e5e5e5;overflow:hidden;margin-bottom:18px}
-.prog i{display:block;height:100%;width:0;background:var(--green);border-radius:99px;transition:width .4s;position:relative}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--purple),var(--pink));border-radius:99px;transition:width .4s;position:relative}
 .prog i:after{content:"";position:absolute;left:8px;right:8px;top:3px;height:4px;border-radius:9px;background:#ffffff55}
 .stage{text-align:center;min-height:340px;padding:24px 18px}
 .q{font-size:clamp(20px,3.4vw,26px);font-weight:900;color:var(--head);margin-bottom:16px}
 .big{font:700 clamp(84px,18vw,130px)/1.25 "Noto Naskh Arabic",serif;color:var(--purple-l);margin:0 0 10px}
 .tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:440px;margin:0 auto}
 .tiles.t3{grid-template-columns:repeat(3,1fr);max-width:480px}
-.opt{--c:var(--blue);--l:var(--blue-l);min-height:92px;border-radius:20px;background:var(--c);box-shadow:0 5px 0 var(--l);color:#fff;font:700 54px/1.1 "Noto Naskh Arabic",serif;display:grid;place-items:center;padding:6px;transition:transform .08s,box-shadow .08s,opacity .2s}
-.opt.txt{font:900 26px/1.1 Nunito,sans-serif}
+.opt{--c:var(--blue);--l:var(--blue-l);min-height:92px;border-radius:32px;background:var(--c);box-shadow:0 5px 0 var(--l);color:#fff;font:700 54px/1.1 "Noto Naskh Arabic",serif;display:grid;place-items:center;padding:6px;transition:transform .08s,box-shadow .08s,opacity .2s}
+.opt.txt{font:900 26px/1.1 Fredoka,sans-serif}
 .opt:active:not(:disabled){transform:translateY(5px);box-shadow:none}
 .opt:disabled{cursor:default}
 .opt.faded{opacity:.35}
-.opt.good{outline:5px solid var(--green);outline-offset:3px}
+.opt.good{outline:5px solid var(--teal);outline-offset:3px}
 .opt.bad{animation:shake .4s;outline:5px solid var(--red);outline-offset:3px}
 @keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
 .list{display:grid;gap:12px;max-width:520px;margin:0 auto}
 .lopt{min-height:60px;border-radius:18px;border:2px solid var(--line);border-bottom-width:5px;background:#fff;font-weight:900;font-size:19px;color:var(--head);padding:10px 18px;text-align:left;display:flex;align-items:center;gap:12px;transition:transform .08s}
 .lopt:hover:not(:disabled){background:#f0faff;border-color:var(--blue)}
 .lopt:active:not(:disabled){transform:translateY(3px);border-bottom-width:2px}
-.lopt.good{background:#d7ffb8;border-color:var(--green);color:#2b7a00}
+.lopt.good{background:#d9f7f1;border-color:var(--teal);color:#0b7d6e}
 .lopt.bad{background:#ffdfe0;border-color:var(--red);color:#b32020;animation:shake .4s}
 .fb{position:sticky;bottom:0;margin:18px -4px 0;padding:16px 20px;border-radius:20px;display:none;align-items:center;gap:14px;flex-wrap:wrap;animation:up .25s}
 @keyframes up{from{transform:translateY(30px);opacity:0}}
 .fb.show{display:flex}
-.fb.ok{background:#d7ffb8;color:#3f8f00}.fb.no{background:#ffdfe0;color:#c42b2b}
+.fb.ok{background:#d9f7f1;color:#0b7d6e}.fb.no{background:#ffdfe0;color:#c42b2b}
 .fb b{font-size:21px;display:block}
 .fb .t{flex:1;min-width:160px;text-align:left}
 .fb .t span{font-weight:800;font-size:15px}
@@ -173,13 +173,13 @@ footer.ft{margin-top:50px;border-top:2px solid var(--line);padding:26px 18px 90p
 .mt .fr{background:var(--c);box-shadow:0 5px 0 var(--l);color:#fff;font-size:30px;font-weight:900}
 .mt .bk{background:#fff;border:3px solid var(--line);font-size:clamp(30px,9vw,46px);transform:rotateY(180deg)}
 .mt.on .fr{transform:rotateY(180deg)}.mt.on .bk{transform:rotateY(0)}
-.mt.m .bk{background:#d7ffb8;border-color:var(--green)}
+.mt.m .bk{background:#d9f7f1;border-color:var(--teal)}
 .msg{font-weight:900;font-size:18px;margin-top:14px;color:var(--muted)}
 
 /* ballons */
 .sky{position:relative;height:330px;background:linear-gradient(#cdeeff,#fff);border:2px solid var(--line);border-radius:20px;overflow:hidden}
 .pb{position:absolute;width:76px;animation:bob 3s ease-in-out infinite}
-.pb span{position:absolute;left:0;right:0;top:12px;text-align:center;font:900 30px Nunito;color:#fff;text-shadow:0 2px 0 #0005}
+.pb span{position:absolute;left:0;right:0;top:12px;text-align:center;font:900 30px Fredoka;color:#fff;text-shadow:0 2px 0 #0005}
 .pb.gone{animation:none;transform:scale(1.6);opacity:0;transition:.3s}
 .pb.wr{animation:shake .4s}
 
@@ -192,7 +192,7 @@ footer.ft{margin-top:50px;border-top:2px solid var(--line);padding:26px 18px 90p
 
 /* wudu */
 .steps{display:grid;gap:10px;max-width:520px;margin:0 auto}
-.stp .n{width:34px;height:34px;border-radius:50%;background:var(--green);color:#fff;display:none;place-items:center;flex:none;font-weight:900}
+.stp .n{width:34px;height:34px;border-radius:50%;background:var(--teal);color:#fff;display:none;place-items:center;flex:none;font-weight:900}
 .stp.good .n{display:grid}
 
 /* suivi */
@@ -205,12 +205,12 @@ footer.ft{margin-top:50px;border-top:2px solid var(--line);padding:26px 18px 90p
 .stat{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:2px solid var(--line)}
 .stat:last-child{border:0}
 .stat .ico{width:46px;height:46px;border-radius:14px;background:var(--c);box-shadow:0 3px 0 var(--l);display:grid;place-items:center;color:#fff;font:700 24px "Noto Naskh Arabic",serif}
-.stat .ico.em{font:400 22px Nunito}
+.stat .ico.em{font:400 22px Fredoka}
 .stat div:nth-child(2){flex:1}.stat small{color:var(--muted);font-size:14px}
 .av{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
 .avb{border:2px solid var(--line);border-bottom-width:5px;border-radius:20px;padding:8px 4px 6px;background:#fff;text-align:center;font-weight:900}
 .avb svg{width:78%;margin:0 auto}
-.avb.on{border-color:var(--green);background:#f1ffe3}
+.avb.on{border-color:var(--green);background:#f1ebff}
 .inp{width:100%;max-width:320px;border:2px solid var(--line);border-radius:14px;padding:12px 14px;font:inherit;font-weight:800;margin-top:8px;background:#fff;color:var(--head)}
 .inp:focus{outline:3px solid #bde6ff;border-color:var(--blue)}
 
@@ -228,7 +228,7 @@ footer.ft{margin-top:50px;border-top:2px solid var(--line);padding:26px 18px 90p
   .side{display:none}
   .tab{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:40;background:#fff;border-top:2px solid var(--line);padding:6px 10px calc(6px + env(safe-area-inset-bottom));justify-content:space-around}
   .tab a{display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 14px;border-radius:14px;font-size:12px;font-weight:900;text-transform:uppercase;color:var(--muted)}
-  .tab a.on{color:var(--orange-l);background:#fff3e0}
+  .tab a.on{color:var(--green-l);background:#f1ebff}
   .tab .si{font-size:22px}
   .shell{padding-bottom:100px}
   .row{grid-template-columns:repeat(3,1fr)}
@@ -254,7 +254,7 @@ footer.ft{margin-top:50px;border-top:2px solid var(--line);padding:26px 18px 90p
 const $=(s,r=document)=>r.querySelector(s);
 const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 const pick=(a,n)=>shuffle(a).slice(0,n);
-const COL=[['green','#58cc02','#46a302'],['blue','#1cb0f6','#1899d6'],['yellow','#ffc800','#e5b400'],['red','#ff4b4b','#ea2b2b'],['purple','#ce82ff','#a568cc'],['orange','#ff9600','#e08600'],['pink','#ff86d0','#e060b0'],['teal','#00cd9c','#00a97f']];
+const COL=[['green','#6c4cf5','#5133d6'],['blue','#2bb6ff','#1796dd'],['yellow','#ffcf33','#e6b300'],['red','#ff5d73','#e63f57'],['purple','#e056c8','#b83fa8'],['orange','#ff8a3d','#e66f1f'],['pink','#ff9ecb','#e87aab'],['teal','#12c9b4','#0fa897']];
 const cv=(i)=>`--c:${COL[i%COL.length][1]};--l:${COL[i%COL.length][2]}`;
 const cvn=(n)=>{const c=COL.find(x=>x[0]===n);return `--c:${c[1]};--l:${c[2]}`};
 
@@ -266,9 +266,9 @@ const MEDALS=[[1,'🌱'],[5,'🐣'],[12,'🦋'],[25,'🌈'],[45,'🚀'],[70,'�
 /* ============ enfants SVG (toutes teintes de peau, visages doux) ============ */
 const SK=['#FFE0C2','#F1C27D','#D9A066','#B97A4A','#8D5524','#5C3A21'];
 function kid(o,vb){
-  const {skin,hair='#2b1b1b',top='#FF86D0',bottom='#1cb0f6',hijab,style='short',wave,dress}=o;
+  const {skin,hair='#2b1b1b',top='#FF86D0',bottom='#2bb6ff',hijab,style='short',wave,dress}=o;
   const cheeks=`<circle cx="46" cy="61" r="5" fill="#FF7A8A" opacity=".45"/><circle cx="74" cy="61" r="5" fill="#FF7A8A" opacity=".45"/>`;
-  const O='#3c3c3c';let head,back='',front='';
+  const O='#2d2250';let head,back='',front='';
   if(hijab){
     back=`<path d="M60 14C36 14 30 36 31 56c1 18 -6 38 -4 58h66c2-20-5-40-4-58 1-20-5-42-29-42z" fill="${hijab}" stroke="${O}" stroke-width="3.5" stroke-linejoin="round"/>`;
     head=`<ellipse cx="60" cy="55" rx="23" ry="25" fill="${skin}" stroke="${O}" stroke-width="3.5"/>`;
@@ -276,35 +276,35 @@ function kid(o,vb){
   }else{
     let h;
     if(style==='curly')h=`<g fill="${hair}" stroke="${O}" stroke-width="3"><circle cx="38" cy="38" r="13"/><circle cx="52" cy="26" r="14"/><circle cx="70" cy="26" r="14"/><circle cx="84" cy="38" r="13"/><circle cx="60" cy="30" r="14"/></g>`;
-    else if(style==='cap')h=`<path d="M36 46c0-18 10-26 24-26s24 8 24 26z" fill="#fff" stroke="${O}" stroke-width="3.5"/><path d="M38 38h44M40 30h40" stroke="#ff9600" stroke-width="3" opacity=".8"/>`;
+    else if(style==='cap')h=`<path d="M36 46c0-18 10-26 24-26s24 8 24 26z" fill="#fff" stroke="${O}" stroke-width="3.5"/><path d="M38 38h44M40 30h40" stroke="#ff8a3d" stroke-width="3" opacity=".8"/>`;
     else h=`<path d="M35 52c-2-22 9-34 25-34s27 12 25 34c-5-10-12-15-25-15s-20 5-25 15z" fill="${hair}" stroke="${O}" stroke-width="3.5" stroke-linejoin="round"/>`;
     head=`<ellipse cx="60" cy="55" rx="23" ry="25" fill="${skin}" stroke="${O}" stroke-width="3.5"/>`;front=h;
   }
   const body=dress?`<path d="M42 82h36l10 56H32z" fill="${top}" stroke="${O}" stroke-width="3.5" stroke-linejoin="round"/><path d="M38 128h44M35 116h50" stroke="#fff" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round" opacity=".8"/>`
     :`<rect x="40" y="80" width="40" height="40" rx="12" fill="${top}" stroke="${O}" stroke-width="3.5"/><path d="M42 118h14v34H42zM64 118h14v34H64z" fill="${bottom}" stroke="${O}" stroke-width="3.5" stroke-linejoin="round"/>`;
   const legs=dress?`<rect x="45" y="136" width="12" height="18" rx="5" fill="${skin}" stroke="${O}" stroke-width="3.5"/><rect x="63" y="136" width="12" height="18" rx="5" fill="${skin}" stroke="${O}" stroke-width="3.5"/>`:'';
-  const shoes=`<ellipse cx="49" cy="157" rx="11" ry="6" fill="#ffc800" stroke="${O}" stroke-width="3.5"/><ellipse cx="71" cy="157" rx="11" ry="6" fill="#ffc800" stroke="${O}" stroke-width="3.5"/>`;
+  const shoes=`<ellipse cx="49" cy="157" rx="11" ry="6" fill="#ffcf33" stroke="${O}" stroke-width="3.5"/><ellipse cx="71" cy="157" rx="11" ry="6" fill="#ffcf33" stroke="${O}" stroke-width="3.5"/>`;
   const arm=(d,hx,hy)=>`<path d="${d}" stroke="${O}" stroke-width="13" stroke-linecap="round" fill="none"/><path d="${d}" stroke="${top}" stroke-width="7" stroke-linecap="round" fill="none"/><circle cx="${hx}" cy="${hy}" r="7" fill="${skin}" stroke="${O}" stroke-width="3"/>`;
   const aL=arm("M42 88c-10 6-14 16-12 26",30,117);
   const aR=wave?arm("M78 88c12-2 20-12 20-26",98,58):arm("M78 88c10 6 14 16 12 26",90,117);
   return `<svg viewBox="${vb||'0 0 120 166'}" aria-hidden="true">${back}${legs}${body}${shoes}${aL}${aR}<rect x="53" y="74" width="14" height="12" rx="5" fill="${skin}"/>${head}${front}${cheeks}</svg>`;
 }
 const KIDS={
-  amina:{skin:SK[1],hijab:'#ce82ff',top:'#ff86d0',dress:1,wave:1},
-  yanis:{skin:SK[0],hair:'#6b3f1d',top:'#1cb0f6',bottom:'#ffc800'},
-  moussa:{skin:SK[5],hair:'#1a1210',top:'#58cc02',bottom:'#ff9600',wave:1},
-  aicha:{skin:SK[3],hijab:'#00cd9c',top:'#ffc800',dress:1},
-  ilyes:{skin:SK[2],top:'#ff4b4b',bottom:'#1cb0f6',style:'cap'},
-  zaynab:{skin:SK[4],hair:'#1a1210',top:'#ff9600',dress:1,style:'curly',wave:1},
-  omar:{skin:SK[1],hair:'#3a2418',top:'#ce82ff',bottom:'#58cc02',style:'curly'},
-  nour:{skin:SK[0],hijab:'#ff9600',top:'#00cd9c',dress:1,wave:1}
+  amina:{skin:SK[1],hijab:'#e056c8',top:'#ff9ecb',dress:1,wave:1},
+  yanis:{skin:SK[0],hair:'#6b3f1d',top:'#2bb6ff',bottom:'#ffcf33'},
+  moussa:{skin:SK[5],hair:'#1a1210',top:'#6c4cf5',bottom:'#ff8a3d',wave:1},
+  aicha:{skin:SK[3],hijab:'#12c9b4',top:'#ffcf33',dress:1},
+  ilyes:{skin:SK[2],top:'#ff5d73',bottom:'#2bb6ff',style:'cap'},
+  zaynab:{skin:SK[4],hair:'#1a1210',top:'#ff8a3d',dress:1,style:'curly',wave:1},
+  omar:{skin:SK[1],hair:'#3a2418',top:'#e056c8',bottom:'#6c4cf5',style:'curly'},
+  nour:{skin:SK[0],hijab:'#ff8a3d',top:'#12c9b4',dress:1,wave:1}
 };
 const NAMES={amina:'Amina',yanis:'Yanis',moussa:'Moussa',aicha:'Aïcha',ilyes:'Ilyes',zaynab:'Zaynab',omar:'Omar',nour:'Nour'};
 const K=n=>kid(KIDS[n]);
 const FACE=n=>kid(KIDS[n],'24 8 72 78');
-function balloon(c,w=60){return `<svg viewBox="0 0 60 100" width="${w}" aria-hidden="true"><path d="M30 76c-3 10 5 12 0 22" stroke="#3c3c3c" stroke-width="3" fill="none" stroke-linecap="round"/><ellipse cx="30" cy="34" rx="25" ry="30" fill="${c}" stroke="#3c3c3c" stroke-width="4"/><path d="M26 63h8l-4 8z" fill="${c}" stroke="#3c3c3c" stroke-width="3" stroke-linejoin="round"/><ellipse cx="20" cy="22" rx="5" ry="10" fill="#fff" opacity=".55" transform="rotate(25 20 22)"/></svg>`}
+function balloon(c,w=60){return `<svg viewBox="0 0 60 100" width="${w}" aria-hidden="true"><path d="M30 76c-3 10 5 12 0 22" stroke="#2d2250" stroke-width="3" fill="none" stroke-linecap="round"/><ellipse cx="30" cy="34" rx="25" ry="30" fill="${c}" stroke="#2d2250" stroke-width="4"/><path d="M26 63h8l-4 8z" fill="${c}" stroke="#2d2250" stroke-width="3" stroke-linejoin="round"/><ellipse cx="20" cy="22" rx="5" ry="10" fill="#fff" opacity=".55" transform="rotate(25 20 22)"/></svg>`}
 const BC=COL.map(c=>c[1]);
-const LOGO=`<a class="logo" href="#/" aria-label="CocoJoujou, accueil"><svg viewBox="0 0 60 70" aria-hidden="true"><path d="M30 52c-2 8 4 10 0 16" stroke="#3c3c3c" stroke-width="3" fill="none" stroke-linecap="round"/><ellipse cx="30" cy="28" rx="24" ry="27" fill="#ff86d0" stroke="#3c3c3c" stroke-width="4"/><path d="M26 52h8l-4 6z" fill="#ff86d0" stroke="#3c3c3c" stroke-width="3" stroke-linejoin="round"/><ellipse cx="20" cy="17" rx="6" ry="9" fill="#fff" opacity=".6" transform="rotate(25 20 17)"/></svg><div><span>${[...'CocoJoujou'].map(c=>`<b>${c}</b>`).join('')}</span><small>L'espace jeux</small></div></a>`;
+const LOGO=`<a class="logo" href="#/" aria-label="CocoJoujou, accueil"><svg viewBox="0 0 60 70" aria-hidden="true"><path d="M30 52c-2 8 4 10 0 16" stroke="#2d2250" stroke-width="3" fill="none" stroke-linecap="round"/><ellipse cx="30" cy="28" rx="24" ry="27" fill="#ff9ecb" stroke="#2d2250" stroke-width="4"/><path d="M26 52h8l-4 6z" fill="#ff9ecb" stroke="#2d2250" stroke-width="3" stroke-linejoin="round"/><ellipse cx="20" cy="17" rx="6" ry="9" fill="#fff" opacity=".6" transform="rotate(25 20 17)"/></svg><div><span>${[...'CocoJoujou'].map(c=>`<b>${c}</b>`).join('')}</span><small>L'espace jeux</small></div></a>`;
 
 /* ============ jeux : catalogue ============ */
 const RUBS=[
@@ -536,7 +536,7 @@ function gColor(){
   gameShell('color',`<div class="q">Choisis une couleur, puis touche un ballon !</div>
    <div class="pal">${BC.map((c,i)=>`<button class="sw ${i?'':'sel'}" style="background:${c}" data-c="${c}" aria-label="Couleur ${i+1}"></button>`).join('')}</div>
    <svg class="paint" viewBox="0 0 300 330" role="img" aria-label="Cinq ballons à colorier"><rect width="300" height="330" rx="22" fill="#eaf8ff"/>
-   ${pos.map(([x,y,r],i)=>`<path d="M${x} ${y+r*1.15}C${x-10} ${y+r*1.8} ${x+10} ${y+r*2} ${x} ${y+r*2.5}" stroke="#3c3c3c" stroke-width="3" fill="none"/><ellipse class="pt" data-i="${i}" cx="${x}" cy="${y}" rx="${r}" ry="${r*1.15}" fill="#fff" stroke="#3c3c3c" stroke-width="4"/>`).join('')}</svg>`);
+   ${pos.map(([x,y,r],i)=>`<path d="M${x} ${y+r*1.15}C${x-10} ${y+r*1.8} ${x+10} ${y+r*2} ${x} ${y+r*2.5}" stroke="#2d2250" stroke-width="3" fill="none"/><ellipse class="pt" data-i="${i}" cx="${x}" cy="${y}" rx="${r}" ry="${r*1.15}" fill="#fff" stroke="#2d2250" stroke-width="4"/>`).join('')}</svg>`);
   $('#stage').querySelectorAll('.sw').forEach(s=>s.onclick=()=>{$('#stage').querySelectorAll('.sw').forEach(x=>x.classList.remove('sel'));s.classList.add('sel');sel=s.dataset.c});
   $('#stage').querySelectorAll('.pt').forEach(p=>p.onclick=()=>{p.setAttribute('fill',sel);done.add(p.dataset.i);prog(done.size/5);
     if(done.size===5&&!p.dataset.f){p.dataset.f=1;setTimeout(()=>finish('color',2,{title:'Quelles belles couleurs !',sub:'Tes ballons sont magnifiques.'}),700)}});
